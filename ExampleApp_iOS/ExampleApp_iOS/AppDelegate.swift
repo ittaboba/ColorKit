@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ExampleApp
+//  ExampleApp_iOS
 //
-//  Created by Lorenzo Bernaschina on 02/01/2019.
+//  Created by Lorenzo Bernaschina on 16/02/2019.
 //  Copyright © 2019 Lorenzo Bernaschina. All rights reserved.
 //
 

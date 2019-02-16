@@ -16,7 +16,7 @@ internal class XYZSpace {
     public var Y: Float
     public var Z: Float
     
-    public init() {
+    init() {
         self.X = 0.0
         self.Y = 0.0
         self.Z = 0.0

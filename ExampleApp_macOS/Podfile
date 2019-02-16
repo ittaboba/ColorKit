@@ -1,0 +1,7 @@
+use_frameworks!
+platform :osx, '10.10'
+
+target 'ExampleApp_macOS' do
+pod 'ColorKit', :path => '../'
+# pod 'ColorKit', :git => 'https://github.com/samwize/MyFramework', :branch => 'master'
+end

@@ -2,11 +2,8 @@
 //  ColorKit.h
 //  ColorKit
 //
-//  Created by Lorenzo Bernaschina on 02/01/2019.
-//  Copyright © 2019 Lorenzo Bernaschina. All rights reserved.
+//  Created by Lorenzo Bernaschina on 16/02/2019.
 //
-
-#import <UIKit/UIKit.h>
 
 //! Project version number for ColorKit.
 FOUNDATION_EXPORT double ColorKitVersionNumber;

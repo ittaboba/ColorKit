@@ -1,0 +1,7 @@
+use_frameworks!
+platform :ios, '9.0'
+
+target 'ExampleApp_iOS' do
+  pod 'ColorKit', :path => '../'
+  # pod 'ColorKit', :git => 'https://github.com/samwize/MyFramework', :branch => 'master'
+end

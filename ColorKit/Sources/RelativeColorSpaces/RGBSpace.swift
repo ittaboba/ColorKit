@@ -34,24 +34,36 @@ public class RGBSpace {
         self.blue = blue
     }
     
-    public func toColor() -> UIColor {
-        let red = CGFloat(self.red)
-        let green = CGFloat(self.green)
-        let blue = CGFloat(self.blue)
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
+    #if os(iOS)
+        public func toColor() -> UIColor {
+            let red = CGFloat(self.red)
+            let green = CGFloat(self.green)
+            let blue = CGFloat(self.blue)
+            
+            return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        }
+    #endif
     
-    public func fromColor(color: UIColor) throws {
-        guard let red = color.rgbColorComponent?.red else {
+    #if os(macOS)
+        public func toColor() -> NSColor {
+            let red = CGFloat(self.red)
+            let green = CGFloat(self.green)
+            let blue = CGFloat(self.blue)
+            
+            return NSColor(red: red, green: green, blue: blue, alpha: 1.0)
+        }
+    #endif
+
+    public func fromColor(color: CGColor) throws {
+        guard let red = color.components?[0] else {
             throw RGBColorError.UndefinedRedComponent
         }
         
-        guard let green = color.rgbColorComponent?.green else {
+        guard let green = color.components?[1] else {
             throw RGBColorError.UndefinedGreenComponent
         }
         
-        guard let blue = color.rgbColorComponent?.blue else {
+        guard let blue = color.components?[2] else {
             throw RGBColorError.UndefinedBlueComponent
         }
         
@@ -61,15 +73,4 @@ public class RGBSpace {
     }
 }
 
-fileprivate extension UIColor {
-    var rgbColorComponent: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
-        guard let components = self.cgColor.components else { return nil }
-        
-        return (
-            red: components[0],
-            green: components[1],
-            blue: components[2],
-            alpha: components[3]
-        )
-    }
-}
+
