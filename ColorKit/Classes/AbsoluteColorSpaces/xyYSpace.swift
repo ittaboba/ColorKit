@@ -5,13 +5,12 @@
 //  Created by Lorenzo Bernaschina on 14/02/2019.
 //
 
-import Foundation
 
 internal class xyYSpace: AbsoluteSpace {
     
-    public var x: CGFloat
-    public var y: CGFloat
-    public var Y: CGFloat
+    public var x: Float
+    public var y: Float
+    public var Y: Float
     
     init() {
         self.x = 0.0
@@ -19,7 +18,7 @@ internal class xyYSpace: AbsoluteSpace {
         self.Y = 0.0
     }
     
-    init(x: CGFloat, y: CGFloat, Y: CGFloat) {
+    init(x: Float, y: Float, Y: Float) {
         self.x = x
         self.y = y
         self.Y = Y

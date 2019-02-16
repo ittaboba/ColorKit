@@ -6,13 +6,10 @@
 //  Copyright © 2019 Lorenzo Bernaschina. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 public class RYBSpace: RelativeSpace {
-    public var red: CGFloat
-    public var yellow: CGFloat
-    public var blue: CGFloat
+    public var red: Float
+    public var yellow: Float
+    public var blue: Float
     
     public init() {
         self.red = 0.0
@@ -20,7 +17,7 @@ public class RYBSpace: RelativeSpace {
         self.blue = 0.0
     }
     
-    public init(red: CGFloat, yellow: CGFloat, blue: CGFloat) {
+    public init(red: Float, yellow: Float, blue: Float) {
         self.red = red
         self.yellow = yellow
         self.blue = blue

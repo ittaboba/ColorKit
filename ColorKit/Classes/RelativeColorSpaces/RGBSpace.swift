@@ -5,8 +5,6 @@
 //  Created by Lorenzo Bernaschina on 13/02/2019.
 //
 
-import Foundation
-
 internal protocol RelativeSpace {
     func fromRGBSpace(space: RGBSpace)
     func toRGBSpace() -> RGBSpace
@@ -20,9 +18,9 @@ enum RGBColorError: Error {
 
 public class RGBSpace {
     
-    public var red: CGFloat
-    public var green: CGFloat
-    public var blue: CGFloat
+    public var red: Float
+    public var green: Float
+    public var blue: Float
     
     public init() {
         self.red = 0.0
@@ -30,14 +28,18 @@ public class RGBSpace {
         self.blue = 0.0
     }
     
-    public init(red: CGFloat, green: CGFloat, blue: CGFloat) {
+    public init(red: Float, green: Float, blue: Float) {
         self.red = red
         self.green = green
         self.blue = blue
     }
     
     public func toColor() -> UIColor {
-        return UIColor(red: self.red, green: self.green, blue: self.blue, alpha: 1.0)
+        let red = CGFloat(self.red)
+        let green = CGFloat(self.green)
+        let blue = CGFloat(self.blue)
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
     public func fromColor(color: UIColor) throws {
@@ -53,9 +55,9 @@ public class RGBSpace {
             throw RGBColorError.UndefinedBlueComponent
         }
         
-        self.red = red
-        self.green = green
-        self.blue = blue
+        self.red = Float(red)
+        self.green = Float(green)
+        self.blue = Float(blue)
     }
 }
 

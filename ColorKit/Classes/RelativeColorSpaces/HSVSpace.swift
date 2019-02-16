@@ -6,8 +6,6 @@
 //  Copyright © 2019 Lorenzo Bernaschina. All rights reserved.
 //
 
-import Foundation
-import UIKit
 
 internal enum HSVColorError: Error {
     case UndefinedValue
@@ -15,9 +13,9 @@ internal enum HSVColorError: Error {
 }
 
 public class HSVSpace: RelativeSpace {
-    public var hue: CGFloat
-    public var saturation: CGFloat
-    public var value: CGFloat
+    public var hue: Float
+    public var saturation: Float
+    public var value: Float
     
     public init(){
         self.hue = 0.0
@@ -25,7 +23,7 @@ public class HSVSpace: RelativeSpace {
         self.value = 0.0
     }
     
-    public init(hue: CGFloat, saturation: CGFloat, value: CGFloat) {
+    public init(hue: Float, saturation: Float, value: Float) {
         self.hue = hue
         self.saturation = saturation
         self.value = value
@@ -60,7 +58,7 @@ public class HSVSpace: RelativeSpace {
         self.saturation = chroma / M
         
         // HUE
-        var hue: CGFloat
+        var hue: Float
         if red == M {
             hue = ((green - blue)/chroma).truncatingRemainder(dividingBy: 6)
         }else if green == M {
@@ -84,12 +82,12 @@ public class HSVSpace: RelativeSpace {
         if self.saturation == 0 {
             return RGBSpace(red: self.value, green: self.value, blue: self.value)
         }else {
-            var hue: CGFloat = 0.0
-            var saturation: CGFloat = 0.0
-            var value: CGFloat = 0.0
+            var hue: Float = 0.0
+            var saturation: Float = 0.0
+            var value: Float = 0.0
             
             var i: Int
-            var f, p, q, t: CGFloat
+            var f, p, q, t: Float
             
             if self.hue == 360 {
                 self.hue = 0
@@ -97,7 +95,7 @@ public class HSVSpace: RelativeSpace {
             
             hue = self.hue / 60.0
             i = Int(hue)
-            f = hue - CGFloat(i)
+            f = hue - Float(i)
             
             value = self.value / 100.0
             saturation = self.saturation / 100.0
