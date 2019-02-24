@@ -24,7 +24,7 @@ public class HSLSpace: RelativeSpace {
         self.lightness = lightness
     }
     
-    func fromRGBSpace(space: RGBSpace) {
+    public func fromRGBSpace(space: RGBSpace) {
         let red = space.red
         let green = space.green
         let blue = space.blue
@@ -73,7 +73,7 @@ public class HSLSpace: RelativeSpace {
         
     }
     
-    func toRGBSpace() -> RGBSpace {
+    public func toRGBSpace() -> RGBSpace {
         if self.saturation == 0 {
             return RGBSpace(red: self.lightness, green: self.lightness, blue: self.lightness)
         } else {

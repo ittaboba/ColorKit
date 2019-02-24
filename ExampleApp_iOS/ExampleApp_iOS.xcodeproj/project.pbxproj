@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		726025321ACADED9C98052BB /* Pods_ExampleApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D4C085952E0DA4D00C8894 /* Pods_ExampleApp_iOS.framework */; };
+		765D5D422221651B00A9D6B9 /* ColorSpaceConcreteMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D412221651B00A9D6B9 /* ColorSpaceConcreteMediator.swift */; };
+		765D5D442221659A00A9D6B9 /* ColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D432221659A00A9D6B9 /* ColorSpace.swift */; };
+		765D5D46222167B600A9D6B9 /* RGBColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D45222167B600A9D6B9 /* RGBColorSpace.swift */; };
+		765D5D48222167C100A9D6B9 /* HSVColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D47222167C100A9D6B9 /* HSVColorSpace.swift */; };
+		765D5D4A2221B4DF00A9D6B9 /* HSLColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D492221B4DF00A9D6B9 /* HSLColorSpace.swift */; };
+		765D5D4C2221B4ED00A9D6B9 /* RYBColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D5D4B2221B4ED00A9D6B9 /* RYBColorSpace.swift */; };
 		ED5483312218732C0040473E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5483302218732C0040473E /* AppDelegate.swift */; };
 		ED5483332218732C0040473E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5483322218732C0040473E /* ViewController.swift */; };
 		ED5483362218732C0040473E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5483342218732C0040473E /* Main.storyboard */; };
@@ -17,6 +23,12 @@
 
 /* Begin PBXFileReference section */
 		6BABDF1AABC08B50D4E0F8A0 /* Pods-ExampleApp_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		765D5D412221651B00A9D6B9 /* ColorSpaceConcreteMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpaceConcreteMediator.swift; sourceTree = "<group>"; };
+		765D5D432221659A00A9D6B9 /* ColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpace.swift; sourceTree = "<group>"; };
+		765D5D45222167B600A9D6B9 /* RGBColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColorSpace.swift; sourceTree = "<group>"; };
+		765D5D47222167C100A9D6B9 /* HSVColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSVColorSpace.swift; sourceTree = "<group>"; };
+		765D5D492221B4DF00A9D6B9 /* HSLColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLColorSpace.swift; sourceTree = "<group>"; };
+		765D5D4B2221B4ED00A9D6B9 /* RYBColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RYBColorSpace.swift; sourceTree = "<group>"; };
 		AA9EB09EC124B323F402AAD6 /* Pods-ExampleApp_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C3D4C085952E0DA4D00C8894 /* Pods_ExampleApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED54832D2218732C0040473E /* ExampleApp_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +92,12 @@
 			children = (
 				ED5483302218732C0040473E /* AppDelegate.swift */,
 				ED5483322218732C0040473E /* ViewController.swift */,
+				765D5D412221651B00A9D6B9 /* ColorSpaceConcreteMediator.swift */,
+				765D5D432221659A00A9D6B9 /* ColorSpace.swift */,
+				765D5D45222167B600A9D6B9 /* RGBColorSpace.swift */,
+				765D5D4B2221B4ED00A9D6B9 /* RYBColorSpace.swift */,
+				765D5D47222167C100A9D6B9 /* HSVColorSpace.swift */,
+				765D5D492221B4DF00A9D6B9 /* HSLColorSpace.swift */,
 				ED5483342218732C0040473E /* Main.storyboard */,
 				ED5483372218732E0040473E /* Assets.xcassets */,
 				ED5483392218732E0040473E /* LaunchScreen.storyboard */,
@@ -181,7 +199,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ColorKit/ColorKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -190,7 +208,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExampleApp_iOS/Pods-ExampleApp_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -200,8 +218,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				765D5D48222167C100A9D6B9 /* HSVColorSpace.swift in Sources */,
+				765D5D46222167B600A9D6B9 /* RGBColorSpace.swift in Sources */,
 				ED5483332218732C0040473E /* ViewController.swift in Sources */,
 				ED5483312218732C0040473E /* AppDelegate.swift in Sources */,
+				765D5D4A2221B4DF00A9D6B9 /* HSLColorSpace.swift in Sources */,
+				765D5D442221659A00A9D6B9 /* ColorSpace.swift in Sources */,
+				765D5D4C2221B4ED00A9D6B9 /* RYBColorSpace.swift in Sources */,
+				765D5D422221651B00A9D6B9 /* ColorSpaceConcreteMediator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
