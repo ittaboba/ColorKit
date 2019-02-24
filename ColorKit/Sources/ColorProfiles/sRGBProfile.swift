@@ -31,22 +31,22 @@ internal class sRGBProfile: ColorProfile {
         var linearBlue: Float
         
         // remove gamma (conversion to linear space RGBLinear)
-        if space.red > 0.04045 {
-            linearRed = pow((space.red + 0.055)/1.055, 2.4)
+        if space.getRed() > 0.04045 {
+            linearRed = pow((space.getRed() + 0.055)/1.055, 2.4)
         } else {
-            linearRed = space.red/12.92
+            linearRed = space.getRed()/12.92
         }
         
-        if space.green > 0.04045 {
-            linearGreen = pow((space.green + 0.055)/1.055, 2.4)
+        if space.getGreen() > 0.04045 {
+            linearGreen = pow((space.getGreen() + 0.055)/1.055, 2.4)
         } else {
-            linearGreen = space.green/12.92
+            linearGreen = space.getGreen()/12.92
         }
         
-        if space.blue > 0.04045 {
-            linearBlue = pow((space.blue + 0.055)/1.055, 2.4)
+        if space.getBlue() > 0.04045 {
+            linearBlue = pow((space.getBlue() + 0.055)/1.055, 2.4)
         } else {
-            linearBlue = space.blue/12.92
+            linearBlue = space.getBlue()/12.92
         }
         
         let linearRGB = float3(linearRed, linearGreen, linearBlue)

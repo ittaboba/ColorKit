@@ -18,9 +18,9 @@ enum RGBColorError: Error {
 
 public class RGBSpace {
     
-    public var red: Float
-    public var green: Float
-    public var blue: Float
+    private var red: Float
+    private var green: Float
+    private var blue: Float
     
     public init() {
         self.red = 0.0
@@ -70,6 +70,18 @@ public class RGBSpace {
         self.red = Float(red)
         self.green = Float(green)
         self.blue = Float(blue)
+    }
+    
+    public func getRed() -> Float {
+        return self.red
+    }
+    
+    public func getGreen() -> Float {
+        return self.green
+    }
+    
+    public func getBlue() -> Float {
+        return self.blue
     }
 }
 

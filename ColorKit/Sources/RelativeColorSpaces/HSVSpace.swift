@@ -13,9 +13,9 @@ internal enum HSVColorError: Error {
 }
 
 public class HSVSpace: RelativeSpace {
-    public var hue: Float
-    public var saturation: Float
-    public var value: Float
+    private var hue: Float
+    private var saturation: Float
+    private var value: Float
     
     public init(){
         self.hue = 0.0
@@ -31,9 +31,9 @@ public class HSVSpace: RelativeSpace {
     
     public func fromRGBSpace(space: RGBSpace)  {
         
-        let red = space.red
-        let green = space.green
-        let blue = space.blue
+        let red = space.getRed()
+        let green = space.getGreen()
+        let blue = space.getBlue()
         
         let M = max(red, green, blue)
         let m = min(red, green, blue)
@@ -121,6 +121,18 @@ public class HSVSpace: RelativeSpace {
                 return RGBSpace()
             }
         }
+    }
+    
+    public func getHue() -> Float {
+        return self.hue
+    }
+    
+    public func getSaturation() -> Float {
+        return self.saturation
+    }
+    
+    public func getValue() -> Float {
+        return self.value
     }
 }
 

@@ -8,9 +8,9 @@
 
 public class HSLSpace: RelativeSpace {
     
-    public var hue: Float
-    public var saturation: Float
-    public var lightness: Float
+    private var hue: Float
+    private var saturation: Float
+    private var lightness: Float
     
     public init() {
         self.hue = 0.0
@@ -25,9 +25,9 @@ public class HSLSpace: RelativeSpace {
     }
     
     public func fromRGBSpace(space: RGBSpace) {
-        let red = space.red
-        let green = space.green
-        let blue = space.blue
+        let red = space.getRed()
+        let green = space.getGreen()
+        let blue = space.getBlue()
         
         let M = max(red, green, blue)
         let m = min(red, green, blue)
@@ -51,15 +51,15 @@ public class HSLSpace: RelativeSpace {
             self.saturation = chroma/(2 - M - m)
         }
         
-        let r = (((M - space.red)/6) + (chroma/2))/chroma
-        let g = (((M - space.green)/6) + (chroma/2))/chroma
-        let b = (((M - space.blue)/6) + (chroma/2))/chroma
+        let r = (((M - red)/6) + (chroma/2))/chroma
+        let g = (((M - green)/6) + (chroma/2))/chroma
+        let b = (((M - blue)/6) + (chroma/2))/chroma
         
-        if space.red == M {
+        if red == M {
             self.hue = b - g
-        } else if space.green == M {
+        } else if green == M {
             self.hue = (1/3) + r - b
-        } else if space.blue == M {
+        } else if blue == M {
             self.hue = (2/3) + g - r
         }
         
@@ -118,5 +118,15 @@ public class HSLSpace: RelativeSpace {
         return v1
     }
     
+    public func getHue() -> Float {
+        return self.hue
+    }
     
+    public func getSaturation() -> Float {
+        return self.saturation
+    }
+    
+    public func getLightness() -> Float {
+        return self.lightness
+    }
 }

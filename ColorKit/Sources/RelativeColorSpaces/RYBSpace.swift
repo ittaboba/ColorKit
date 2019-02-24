@@ -7,9 +7,9 @@
 //
 
 public class RYBSpace: RelativeSpace {
-    public var red: Float
-    public var yellow: Float
-    public var blue: Float
+    private var red: Float
+    private var yellow: Float
+    private var blue: Float
     
     public init() {
         self.red = 0.0
@@ -33,9 +33,9 @@ public class RYBSpace: RelativeSpace {
      */
     public func fromRGBSpace(space: RGBSpace) {
         
-        var red = space.red
-        var green = space.green
-        var blue = space.blue
+        var red = space.getRed()
+        var green = space.getGreen()
+        var blue = space.getBlue()
         
         // remove white from RGB color
         let white = min(red, green, blue)
@@ -149,6 +149,18 @@ public class RYBSpace: RelativeSpace {
         self.red = newRed
         self.yellow = newYellow
         self.blue = newBlue
+    }
+    
+    public func getRed() -> Float {
+        return self.red
+    }
+    
+    public func getYellow() -> Float {
+        return self.yellow
+    }
+    
+    public func getBlue() -> Float {
+        return self.blue
     }
 }
 

@@ -16,9 +16,9 @@ public class LMSSpace: RelativeSpace {
         simd_float3(0, 0, 0.9182)
     ])
     
-    public var long: Float
-    public var medium: Float
-    public var short: Float
+    private var long: Float
+    private var medium: Float
+    private var short: Float
     
     public init() {
         self.long = 0.0
@@ -54,4 +54,15 @@ public class LMSSpace: RelativeSpace {
         return RGB
     }
     
+    public func getLong() -> Float {
+        return self.long
+    }
+    
+    public func getMedium() -> Float {
+        return self.medium
+    }
+    
+    public func getShort() -> Float {
+        return self.short
+    }
 }

@@ -128,41 +128,41 @@ extension ViewController: UITableViewDataSource {
             let rgbColorSpace = colorSpace as! RGBColorSpace
             let rgbSpace = rgbColorSpace.getColorSpace()
             cell.title.text = rgbColorSpace.getName()
-            cell.textField1.text = String(rgbSpace.red)
-            cell.textField2.text = String(rgbSpace.green)
-            cell.textField3.text = String(rgbSpace.blue)
+            cell.textField1.text = String(rgbSpace.getRed())
+            cell.textField2.text = String(rgbSpace.getGreen())
+            cell.textField3.text = String(rgbSpace.getBlue())
             cell.imgView.backgroundColor = rgbSpace.toColor()
         case is RYBColorSpace:
             let rybColorSpace = colorSpace as! RYBColorSpace
             let rybSpace = rybColorSpace.getColorSpace()
             cell.title.text = rybColorSpace.getName()
-            cell.textField1.text = String(rybSpace.red)
-            cell.textField2.text = String(rybSpace.yellow)
-            cell.textField3.text = String(rybSpace.blue)
+            cell.textField1.text = String(rybSpace.getRed())
+            cell.textField2.text = String(rybSpace.getYellow())
+            cell.textField3.text = String(rybSpace.getBlue())
             cell.imgView.backgroundColor = rybSpace.toRGBSpace().toColor()
         case is HSVColorSpace:
             let hsvColorSpace = colorSpace as! HSVColorSpace
             let hsvSpace = hsvColorSpace.getColorSpace()
             cell.title.text = hsvColorSpace.getName()
-            cell.textField1.text = String(hsvSpace.hue)
-            cell.textField2.text = String(hsvSpace.saturation)
-            cell.textField3.text = String(hsvSpace.value)
+            cell.textField1.text = String(hsvSpace.getHue())
+            cell.textField2.text = String(hsvSpace.getSaturation())
+            cell.textField3.text = String(hsvSpace.getValue())
             cell.imgView.backgroundColor = hsvSpace.toRGBSpace().toColor()
         case is HSLColorSpace:
             let hslColorSpace = colorSpace as! HSLColorSpace
             let hslSpace = hslColorSpace.getColorSpace()
             cell.title.text = hslColorSpace.getName()
-            cell.textField1.text = String(hslSpace.hue)
-            cell.textField2.text = String(hslSpace.saturation)
-            cell.textField3.text = String(hslSpace.lightness)
+            cell.textField1.text = String(hslSpace.getHue())
+            cell.textField2.text = String(hslSpace.getSaturation())
+            cell.textField3.text = String(hslSpace.getLightness())
             cell.imgView.backgroundColor = hslSpace.toRGBSpace().toColor()
         case is LMSColorSpace:
             let lmsColorSpace = colorSpace as! LMSColorSpace
             let lmsSpace = lmsColorSpace.getColorSpace()
             cell.title.text = lmsColorSpace.getName()
-            cell.textField1.text = String(lmsSpace.long)
-            cell.textField2.text = String(lmsSpace.medium)
-            cell.textField3.text = String(lmsSpace.short)
+            cell.textField1.text = String(lmsSpace.getLong())
+            cell.textField2.text = String(lmsSpace.getMedium())
+            cell.textField3.text = String(lmsSpace.getShort())
             cell.imgView.backgroundColor = lmsSpace.toRGBSpace().toColor()
         default:
             break
