@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     private var rybColorSpace: RYBColorSpace
     private var hsvColorSpace: HSVColorSpace
     private var hslColorSpace: HSLColorSpace
+    private var lmsColorSpace: LMSColorSpace
     
     private var colorSpaces: [ColorSpace]
     
@@ -38,11 +39,13 @@ class ViewController: UIViewController {
         self.rybColorSpace = self.manager.getRybColorSpace()
         self.hsvColorSpace = self.manager.getHsvColorSpace()
         self.hslColorSpace = self.manager.getHslColorSpace()
+        self.lmsColorSpace = self.manager.getLmsColorSpace()
         
         self.colorSpaces = [self.rgbColorSpace,
                             self.rybColorSpace,
                             self.hsvColorSpace,
-                            self.hslColorSpace]
+                            self.hslColorSpace,
+                            self.lmsColorSpace]
         
         super.init(coder: aDecoder)
     }
@@ -61,6 +64,10 @@ class ViewController: UIViewController {
     
     private func userChangedHslValues(h: Float, s: Float, l: Float) {
         self.hslColorSpace.colorSpaceUpdate(space: HSLSpace(hue: h, saturation: s, lightness: l))
+    }
+    
+    private func userChangedLmsValues(l: Float, m: Float, s: Float) {
+        self.lmsColorSpace.colorSpaceUpdate(space: LMSSpace(long: l, medium: m, short: s))
     }
 }
 
@@ -95,6 +102,8 @@ extension ViewController: UITextFieldDelegate {
             self.userChangedHsvValues(h: value1, s: value2, v: value3)
         case 3:
             self.userChangedHslValues(h: value1, s: value2, l: value3)
+        case 4:
+            self.userChangedLmsValues(l: value1, m: value2, s: value3)
         default:
             break
         }
@@ -147,6 +156,14 @@ extension ViewController: UITableViewDataSource {
             cell.textField2.text = String(hslSpace.saturation)
             cell.textField3.text = String(hslSpace.lightness)
             cell.imgView.backgroundColor = hslSpace.toRGBSpace().toColor()
+        case is LMSColorSpace:
+            let lmsColorSpace = colorSpace as! LMSColorSpace
+            let lmsSpace = lmsColorSpace.getColorSpace()
+            cell.title.text = lmsColorSpace.getName()
+            cell.textField1.text = String(lmsSpace.long)
+            cell.textField2.text = String(lmsSpace.medium)
+            cell.textField3.text = String(lmsSpace.short)
+            cell.imgView.backgroundColor = lmsSpace.toRGBSpace().toColor()
         default:
             break
         }

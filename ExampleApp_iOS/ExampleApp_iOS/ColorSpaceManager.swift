@@ -16,12 +16,14 @@ public class ColorSpaceManager: ColorSpaceMediator {
     private var rybColorSpace: RYBColorSpace!
     private var hsvColorSpace: HSVColorSpace!
     private var hslColorSpace: HSLColorSpace!
+    private var lmsColorSpace: LMSColorSpace!
     
     public func createColorSpaces() {
         self.rgbColorSpace = RGBColorSpace(mediator: self)
         self.rybColorSpace = RYBColorSpace(mediator: self)
         self.hsvColorSpace = HSVColorSpace(mediator: self)
         self.hslColorSpace = HSLColorSpace(mediator: self)
+        self.lmsColorSpace = LMSColorSpace(mediator: self)
     }
     
     public func colorSpaceChanged(c: ColorSpace) {
@@ -31,21 +33,31 @@ public class ColorSpaceManager: ColorSpaceMediator {
             self.rybColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hsvColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hslColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.lmsColorSpace.setColorSpaceFrom(space: rgbSpace)
         case is RYBColorSpace:
             let rgbSpace = self.rybColorSpace.getColorSpace().toRGBSpace()
             self.rgbColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hsvColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hslColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.lmsColorSpace.setColorSpaceFrom(space: rgbSpace)
         case is HSVColorSpace:
             let rgbSpace = self.hsvColorSpace.getColorSpace().toRGBSpace()
             self.rgbColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.rybColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hslColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.lmsColorSpace.setColorSpaceFrom(space: rgbSpace)
         case is HSLColorSpace:
             let rgbSpace = self.hslColorSpace.getColorSpace().toRGBSpace()
             self.rgbColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.rybColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hsvColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.lmsColorSpace.setColorSpaceFrom(space: rgbSpace)
+        case is LMSColorSpace:
+            let rgbSpace = self.lmsColorSpace.getColorSpace().toRGBSpace()
+            self.rgbColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.rybColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.hsvColorSpace.setColorSpaceFrom(space: rgbSpace)
+            self.hslColorSpace.setColorSpaceFrom(space: rgbSpace)
         default:
             break
         }
@@ -65,6 +77,10 @@ public class ColorSpaceManager: ColorSpaceMediator {
     
     public func getHslColorSpace() -> HSLColorSpace {
         return self.hslColorSpace
+    }
+    
+    public func getLmsColorSpace() -> LMSColorSpace {
+        return self.lmsColorSpace
     }
     
 }

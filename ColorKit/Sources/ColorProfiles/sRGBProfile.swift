@@ -9,12 +9,12 @@
 
 import simd
 
-internal protocol SpaceConverter {
+internal protocol ColorProfile {
     func fromRGBtoXYZ(space: RGBSpace) -> XYZSpace
     func fromXYZtoRGB(space: XYZSpace) -> RGBSpace
 }
 
-internal class sRGBProfile: SpaceConverter {
+internal class sRGBProfile: ColorProfile {
     
     // observer = 2, illuminant = D65
     private let sRGBMatrix = simd_float3x3(rows:[
@@ -50,8 +50,7 @@ internal class sRGBProfile: SpaceConverter {
         }
         
         let linearRGB = float3(linearRed, linearGreen, linearBlue)
-        let M = self.sRGBMatrix
-        let XYZVector = M * linearRGB
+        let XYZVector = self.sRGBMatrix * linearRGB
         
         return XYZSpace(X: XYZVector.x, Y: XYZVector.y, Z: XYZVector.z)
     }
@@ -61,9 +60,8 @@ internal class sRGBProfile: SpaceConverter {
         var green: Float
         var blue: Float
         
-        let inverseM = self.sRGBMatrix.inverse
         let XYZVector = float3(space.X, space.Y, space.Z)
-        let linearRGB = inverseM * XYZVector
+        let linearRGB = self.sRGBMatrix.inverse * XYZVector
         
         let linearRed = linearRGB.x
         let linearGreen = linearRGB.y
