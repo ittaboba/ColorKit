@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var concreteMediator = ColorSpaceConcreteMediator()
+    private var manager = ColorSpaceManager()
     private var rgbColorSpace: RGBColorSpace
     private var rybColorSpace: RYBColorSpace
     private var hsvColorSpace: HSVColorSpace
@@ -33,11 +33,11 @@ class ViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         
-        self.concreteMediator.createColorSpaces();
-        self.rgbColorSpace = self.concreteMediator.getRgbColorSpace()
-        self.rybColorSpace = self.concreteMediator.getRybColorSpace()
-        self.hsvColorSpace = self.concreteMediator.getHsvColorSpace()
-        self.hslColorSpace = self.concreteMediator.getHslColorSpace()
+        self.manager.createColorSpaces();
+        self.rgbColorSpace = self.manager.getRgbColorSpace()
+        self.rybColorSpace = self.manager.getRybColorSpace()
+        self.hsvColorSpace = self.manager.getHsvColorSpace()
+        self.hslColorSpace = self.manager.getHslColorSpace()
         
         self.colorSpaces = [self.rgbColorSpace,
                             self.rybColorSpace,

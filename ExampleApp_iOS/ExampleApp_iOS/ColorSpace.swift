@@ -17,5 +17,4 @@ public class ColorSpace {
     public func changed() {
         self.mediator.colorSpaceChanged(c: self)
     }
-
 }

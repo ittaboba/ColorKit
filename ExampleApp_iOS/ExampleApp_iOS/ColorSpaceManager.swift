@@ -10,7 +10,7 @@ public protocol ColorSpaceMediator {
     func colorSpaceChanged(c: ColorSpace)
 }
 
-public class ColorSpaceConcreteMediator: ColorSpaceMediator {
+public class ColorSpaceManager: ColorSpaceMediator {
     
     private var rgbColorSpace: RGBColorSpace!
     private var rybColorSpace: RYBColorSpace!
@@ -47,7 +47,7 @@ public class ColorSpaceConcreteMediator: ColorSpaceMediator {
             self.rybColorSpace.setColorSpaceFrom(space: rgbSpace)
             self.hsvColorSpace.setColorSpaceFrom(space: rgbSpace)
         default:
-            print("Default")
+            break
         }
     }
     
