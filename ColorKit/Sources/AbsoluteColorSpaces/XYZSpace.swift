@@ -27,5 +27,4 @@ internal class XYZSpace {
         self.Y = Y
         self.Z = Z
     }
-    
 }

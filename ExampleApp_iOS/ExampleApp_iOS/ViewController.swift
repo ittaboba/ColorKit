@@ -120,6 +120,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomCell
+        cell.imgView.layer.cornerRadius = 5.0
         
         let colorSpace = self.colorSpaces[indexPath.row]
         

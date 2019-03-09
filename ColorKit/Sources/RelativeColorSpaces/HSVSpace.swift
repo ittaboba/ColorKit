@@ -41,14 +41,10 @@ public class HSVSpace: RelativeSpace {
         // Chroma is the difference between the largest and the smallest values among R, G or B in a color
         let chroma = M - m
         
-        guard M > 0 else {
-            return
-        }
-        
         // VALUE is defined as the largest component of a color
         self.value = M
         
-        guard M != 0 else {
+        guard chroma != 0 else {
             self.saturation = 0
             self.hue = 0
             return
