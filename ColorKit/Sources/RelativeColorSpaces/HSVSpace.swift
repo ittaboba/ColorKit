@@ -42,7 +42,7 @@ public class HSVSpace: RelativeSpace {
         let chroma = M - m
         
         // VALUE is defined as the largest component of a color
-        self.value = M
+        self.value = M * 100
         
         guard chroma != 0 else {
             self.saturation = 0
@@ -57,9 +57,9 @@ public class HSVSpace: RelativeSpace {
         var hue: Float
         if red == M {
             hue = ((green - blue)/chroma).truncatingRemainder(dividingBy: 6)
-        }else if green == M {
+        } else if green == M {
             hue = (blue - red)/chroma + 2.0
-        }else {
+        } else {
             hue = (red - green)/chroma + 4.0
         }
         
@@ -71,17 +71,17 @@ public class HSVSpace: RelativeSpace {
         
         self.hue = hue
         self.saturation *= 100
-        self.value *= 100
+
     }
     
     public func toRGBSpace() -> RGBSpace {
-        if self.saturation == 0 {
-            return RGBSpace(red: self.value, green: self.value, blue: self.value)
+        var hue: Float
+        let saturation = self.saturation/100
+        let value = self.value/100
+        
+        if saturation == 0 {
+            return RGBSpace(red: value, green: value, blue: value)
         }else {
-            var hue: Float = 0.0
-            var saturation: Float = 0.0
-            var value: Float = 0.0
-            
             var i: Int
             var f, p, q, t: Float
             
@@ -92,9 +92,6 @@ public class HSVSpace: RelativeSpace {
             hue = self.hue / 60.0
             i = Int(hue)
             f = hue - Float(i)
-            
-            value = self.value / 100.0
-            saturation = self.saturation / 100.0
             
             p = value * (1.0 - saturation)
             q = value * (1.0 - (saturation * f))

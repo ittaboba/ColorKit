@@ -35,7 +35,7 @@ public class HSLSpace: RelativeSpace {
         // Chroma is the difference between the largest and the smallest values among R, G or B in a color
         let chroma = M - m
         
-        self.lightness = (M + m)/2
+        self.lightness = (M + m)/2 * 100
         
         guard chroma != 0 else {
             // This is a gray, no chroma
@@ -45,52 +45,53 @@ public class HSLSpace: RelativeSpace {
         }
         
         // Chromatic data
-        if self.lightness < 0.5 {
+        if self.lightness < 50 {
             self.saturation = chroma/(M + m)
         } else {
             self.saturation = chroma/(2 - M - m)
         }
         
-        let r = (((M - red)/6) + (chroma/2))/chroma
-        let g = (((M - green)/6) + (chroma/2))/chroma
-        let b = (((M - blue)/6) + (chroma/2))/chroma
-        
+        var hue: Float
         if red == M {
-            self.hue = b - g
+            hue = (green - blue)/chroma
         } else if green == M {
-            self.hue = (1/3) + r - b
-        } else if blue == M {
-            self.hue = (2/3) + g - r
+            hue = 2 + (blue - red)/chroma
+        } else {
+            hue = 4 + (red - green)/chroma
         }
         
-        if self.hue < 0 {
-            self.hue += 1
+        hue *= 60
+        
+        if hue < 0 {
+            hue += 360.0
         }
         
-        if self.hue > 1 {
-            self.hue -= 1
-        }
-        
+        self.hue = hue
+        self.saturation *= 100
     }
     
     public func toRGBSpace() -> RGBSpace {
-        if self.saturation == 0 {
-            return RGBSpace(red: self.lightness, green: self.lightness, blue: self.lightness)
+        let hue = self.hue/360
+        let saturation = self.saturation/100
+        let lightness = self.lightness/100
+        
+        if saturation == 0 {
+            return RGBSpace(red: lightness, green: lightness, blue: lightness)
         } else {
             var val1: Float
             var val2: Float
             
-            if self.lightness < 0.5 {
-                val2 = self.lightness * (1 + self.saturation)
+            if lightness < 0.5 {
+                val2 = lightness * (1 + saturation)
             } else {
-                val2 = (self.lightness + self.saturation) - (self.saturation * self.lightness)
+                val2 = (lightness + saturation) - (saturation * lightness)
             }
             
-            val1 = 2 * self.lightness - val2
+            val1 = 2 * lightness - val2
             
-            let red = self.hueToRGB(v1: val1, v2: val2, vH: self.hue + (1/3))
-            let green = self.hueToRGB(v1: val1, v2: val2, vH: self.hue)
-            let blue = self.hueToRGB(v1: val1, v2: val2, vH: self.hue - (1/3))
+            let red = self.hueToRGB(v1: val1, v2: val2, vH: hue + 1/3)
+            let green = self.hueToRGB(v1: val1, v2: val2, vH: hue)
+            let blue = self.hueToRGB(v1: val1, v2: val2, vH: hue - 1/3)
             
             return RGBSpace(red: red, green: green, blue: blue)
         }
