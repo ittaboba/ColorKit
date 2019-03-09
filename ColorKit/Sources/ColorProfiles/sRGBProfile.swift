@@ -68,22 +68,40 @@ internal class sRGBProfile: ColorProfile {
         let linearBlue = linearRGB.z
         
         // apply gamma
-        if linearRed > 0.0031308 {
+        if abs(linearRed) > 0.0031308 {
             red = 1.055 * pow(linearRed, 1/2.4) - 0.055
         } else {
             red = 12.92 * linearRed
         }
         
-        if linearGreen > 0.0031308 {
+        if abs(linearGreen) > 0.0031308 {
             green = 1.055 * pow(linearGreen, 1/2.4) - 0.055
         } else {
             green = 12.92 * linearGreen
         }
         
-        if linearBlue > 0.0031308 {
+        if abs(linearBlue) > 0.0031308 {
             blue = 1.055 * pow(linearBlue, 1/2.4) - 0.055
         } else {
             blue = 12.92 * linearBlue
+        }
+        
+        if red > 1.0 {
+            red = 1.0
+        } else if red.isNaN {
+            red = 0
+        }
+        
+        if green > 1.0 {
+            green = 1.0
+        } else if green.isNaN {
+            green = 0
+        }
+        
+        if blue > 1.0 {
+            blue = 1.0
+        } else if blue.isNaN {
+            blue = 0
         }
         
         return RGBSpace(red: red, green: green, blue: blue)
